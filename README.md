@@ -1,37 +1,24 @@
-## Welcome to GitHub Pages
+## Firebase Assignment - Train Scheduler (Basic - Recommended)
 
-You can use the [editor on GitHub](https://github.com/sharstream/FirebaseHW/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Because that Rock Paper Scissors Game is Too Damn Hard
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Overview
 
-### Markdown
+In this assignment, you'll create a train schedule application that incorporates Firebase to host arrival and departure data. Your app will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Setup
 
-```markdown
-Syntax highlighted code block
+- We'll leave that up to you -- however you like. Just make sure you're using Firebase to store data, GitHub to backup your project, and GithHub Pages to host your finished site.
 
-# Header 1
-## Header 2
-### Header 3
+### Instructions
+- Make sure that your app suits this basic spec:
 
-- Bulleted
-- List
+- When adding trains, administrators should be able to submit the following:
+- Train Name
+- Destination
+- First Train Time -- in military time
+- Frequency -- in minutes
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sharstream/FirebaseHW/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Code this app to calculate when the next train will arrive; this should be relative to the current time.
+- Users from many different machines must be able to view same train times.
+- Styling and theme are completely up to you. Get Creative!
