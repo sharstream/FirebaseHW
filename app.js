@@ -19,6 +19,14 @@ $(document).ready(function(){
 
     var trains = [];
 
+    var timer = 0;
+
+    //  Variable that will hold our setInterval that runs the stopwatch
+    var intervalId;
+
+    // prevents the clock from being sped up unnecessarily
+    var clockRunning = false;
+
     function displayTable(ele) {
         appendTableColumn($('table'), ele);
     }
@@ -65,10 +73,33 @@ $(document).ready(function(){
             away: away
         });
     }
+
+    function calculateNextArrival(eventTime, currentTime, duration, diffTime, data) {
+        // how calculate retention time for current and nextarrival
+        var interval = 1000; 
+        diffTime = eventTime - currentTime;
+        var fromDate = moment.utc(eventTime);// Timestamp 13:00 GMT
+        var toDate = moment(fromDate, 'hh:mm a').format('hh:mm a');// Timestamp 13:00 PM
+        toDate.add('mm:ss', duration);
+
+        duration = moment.duration(diffTime * 1000, 'milliseconds');
+        
+        var hourDiff = toDate.diff(fromDate, 'hours');
+        var minuteDiff = toDate.diff(fromDate, 'minutes');
+        hourDuration = Math.floor(minuteDiff / 60);
+        minuteDuration = minuteDiff % 60;
+        toDate.toISOString();
+
+        setInterval(function () {
+            duration = moment.duration(duration - interval, 'milliseconds');
+            appendTableColumn($('table'),data);// refresh the rowTable
+            // $('table > tbody'+ ).text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
+        }, interval);
+    };
     
     $("#submit").on("click", function (event) {
         // prevent page from refreshing when form tries to submit itself
-        // debugger
+        debugger
         event.preventDefault();
         
         // Capture user inputs and store them into variables
@@ -76,11 +107,15 @@ $(document).ready(function(){
         var name = $("#name").val().trim();
         var destination = $("#destination").val().trim();
 
-        var firstTime = moment($("#firstTime").val().trim(), "hh:mm A").format("LT");
-        var frequency = moment($("#frequency").val().trim(), "m").format("m");
+        var firstTime = $("#firstTime").val().trim();
+
+        var frequency = $("#frequency").val().trim();
 
         var nextArrive = "3:00 PM";
         var away = "2";
+
+        // calculateNextArrival(firstTime, nextArrive, frequency, away);
+
     // nextArrive = moment(firstTime).add(frequency, 'hh:mm A').format("HH:mm A");
     // away = moment(nextArrive).diff(firstTime, 'HH');
 
