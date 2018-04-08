@@ -51,6 +51,12 @@ $(document).ready(function(){
 
         return lastRow;
     }
+    
+    function editRow(row) {
+        $('td', row).each(function () {
+            $(this).html('<input type="text" value="' + $(this).html() + '" />');
+        });
+    }
 
     function retrieveTravels() {
         // debugger
@@ -96,6 +102,11 @@ $(document).ready(function(){
             // $('table > tbody'+ ).text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
         }, interval);
     };
+
+    $('th').on('click', function(){
+        debugger
+        editRow(this);
+    });
     
     $("#submit").on("click", function (event) {
         // prevent page from refreshing when form tries to submit itself
